@@ -1,0 +1,9 @@
+[submodule "require/IEGenLib"]
+	path = require/IEGenLib
+	url = git@github.com:ztuowen/IEGenLib.git
+[submodule "require/boost"]
+	path = require/boost
+	url = git@github.com:boostorg/boost.git
+[submodule "require/rose"]
+	path = require/rose
+	url = git@github.com:rose-compiler/rose.git
