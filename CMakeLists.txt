@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.1)
 project(chill)
 
 file(STRINGS ${CMAKE_SOURCE_DIR}/CHILL_VERSION CHILL_VERSION)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 message(STATUS "Configuring for chill ${CHILL_VERSION}")
 
 if (DEFINED ENV{CHILLENV})
@@ -153,6 +153,7 @@ chill_link_libraries(chill
         chill_io chill_ir chill_ast chill_parser chill_core chill_printer chill_scanner parseRel
         ${CORE_LIBS}
         ${PYTHON_LIBRARY}
+	-L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpython2.7 -lpthread -ldl  -lutil -lm  -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
         )
 
 add_dependencies(chill ${chill-libs})
@@ -172,7 +173,9 @@ add_executable(cuda-chill
 chill_link_libraries(cuda-chill
         chill_cuda chill_io chill_ir chill_ast chill_parser chill_core chill_printer chill_scanner parseRel
         ${CORE_LIBS}
-        ${PYTHON_LIBRARY})
+        ${PYTHON_LIBRARY}
+	-L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpython2.7 -lpthread -ldl  -lutil -lm  -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
+	)
 
 add_dependencies(cuda-chill ${chill-libs} chill_cuda)
 

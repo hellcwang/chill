@@ -12,6 +12,7 @@
 #include <sstream>
 
 using namespace omega;
+using namespace iegenlib;
 
 omega::Relation flip_var_exclusive(omega::Relation &r1, Variable_ID &v1) {
   omega::Relation r;
@@ -1996,7 +1997,7 @@ relCounter = 1;
     iegenlib::Relation *iegen_write_sch = new iegenlib::Relation(omega_orig_write_sch);
     iegenlib::Set *iegen_write;
     iegen_write = iegen_write_sch->Apply(iegen_write_is);
-    std::string iegen_write_str = iegen_write->getString();//prettyPrintString();//
+    std::string iegen_write_str = iegen_write->toString();//prettyPrintString();//
     replace_tv_name(iegen_write_str,std::string("Out"),std::string("In"));
 
     std::string omega_orig_read_is = omega_rel_to_string(read_orig_IS_p);
@@ -2005,7 +2006,7 @@ relCounter = 1;
     iegenlib::Relation *iegen_read_sch = new iegenlib::Relation(omega_orig_read_sch);
     iegenlib::Set *iegen_read;
     iegen_read = iegen_read_sch->Apply(iegen_read_is);
-    std::string iegen_read_str = iegen_read->getString();//prettyPrintString();//
+    std::string iegen_read_str = iegen_read->toString();//prettyPrintString();//
     // Mahdi FIXME: exception for smSmMul: make this general by getting it from json file
     //              we are not considering smSmMul for now.
     //replace_tv_name(iegen_read_str,std::string("nz"),std::string("nzp"));
